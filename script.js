@@ -23,12 +23,12 @@ function displayWeather(weather) {
     let tempIcon = document.getElementById('temp-icon');
 
     document.getElementById('info').classList.remove('hide');
-    cityName.innerText = `${weather.name}, ${weather.sys.country}`;
-    cityWeather.innerText = `${weather.weather[0].main}`;
-    cityTemp.innerText = Math.ceil(`${weather.main.temp}`) + ' °C';
+    cityName.innerText = weather.name + ', ' + weather.sys.country;
+    cityWeather.innerText = weather.weather[0].main;
+    cityTemp.innerText = Math.ceil(weather.main.temp) + ' °C';
     tempIcon.classList.add('fa-temperature-low');
 
-    if(`${weather.weather[0].main}` == 'Clouds') {
+    if(weather.weather[0].main == 'Clouds') {
 
         background.style.backgroundImage = 'url("./Images/cloud.jpg")';
         weatherIcon.classList.add('fa-cloud-sun');
@@ -36,7 +36,7 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-cloud-rain');
         weatherIcon.classList.remove('fa-smog');
 
-    } else if(`${weather.weather[0].main}` == 'Clear') {
+    } else if(weather.weather[0].main == 'Clear') {
 
         background.style.backgroundImage = 'url("./Images/sun.png")';
         weatherIcon.classList.add('fa-sun');
@@ -44,7 +44,7 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-cloud-rain');
         weatherIcon.classList.remove('fa-smog');
 
-    } else if(`${weather.weather[0].main}` == 'Rain') {
+    } else if(weather.weather[0].main == 'Rain' || weather.weather[0].main == 'Drizzle') {
 
         background.style.backgroundImage = 'url("./Images/rain.png")';
         weatherIcon.classList.add('fa-cloud-rain');
@@ -52,7 +52,7 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-cloud-sun');
         weatherIcon.classList.remove('fa-smog');
 
-    } else if(`${weather.weather[0].main}` == 'Haze') {
+    } else if(weather.weather[0].main == 'Haze' || weather.weather[0].main == 'Mist') {
 
         background.style.backgroundImage = 'url("./Images/haze.jpg")';
         weatherIcon.classList.add('fa-smog');
