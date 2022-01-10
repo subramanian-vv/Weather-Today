@@ -35,6 +35,8 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-sun');
         weatherIcon.classList.remove('fa-cloud-rain');
         weatherIcon.classList.remove('fa-smog');
+        weatherIcon.classList.remove('fa-cloud-showers-heavy');
+        weatherIcon.classList.remove('fa-snowflake');
 
     } else if(weather.weather[0].main == 'Clear') {
 
@@ -43,6 +45,8 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-cloud-sun');
         weatherIcon.classList.remove('fa-cloud-rain');
         weatherIcon.classList.remove('fa-smog');
+        weatherIcon.classList.remove('fa-cloud-showers-heavy');
+        weatherIcon.classList.remove('fa-snowflake');
 
     } else if(weather.weather[0].main == 'Rain' || weather.weather[0].main == 'Drizzle') {
 
@@ -51,23 +55,45 @@ function displayWeather(weather) {
         weatherIcon.classList.remove('fa-sun');
         weatherIcon.classList.remove('fa-cloud-sun');
         weatherIcon.classList.remove('fa-smog');
+        weatherIcon.classList.remove('fa-cloud-showers-heavy');
+        weatherIcon.classList.remove('fa-snowflake');
 
-    } else if(weather.weather[0].main == 'Haze' || weather.weather[0].main == 'Mist') {
+    } else if(weather.weather[0].main == 'Thunderstorm') {
+
+        background.style.backgroundImage = 'url("./Images/thunderstorm.jpg")';
+        weatherIcon.classList.add('fa-cloud-showers-heavy');
+        weatherIcon.classList.remove('fa-sun');
+        weatherIcon.classList.remove('fa-cloud-sun');
+        weatherIcon.classList.remove('fa-cloud-rain');
+        weatherIcon.classList.remove('fa-smog');
+        weatherIcon.classList.remove('fa-snowflake');
+
+    } else if(weather.weather[0].main == 'Snow') {
+
+        background.style.backgroundImage = 'url("./Images/snow.jpg")';
+        weatherIcon.classList.add('fa-snowflake');
+        weatherIcon.classList.remove('fa-sun');
+        weatherIcon.classList.remove('fa-cloud-sun');
+        weatherIcon.classList.remove('fa-cloud-rain');
+        weatherIcon.classList.remove('fa-smog');
+        weatherIcon.classList.remove('fa-cloud-showers-heavy');
+
+    } else {
 
         background.style.backgroundImage = 'url("./Images/haze.jpg")';
         weatherIcon.classList.add('fa-smog');
         weatherIcon.classList.remove('fa-sun');
         weatherIcon.classList.remove('fa-cloud-rain');
         weatherIcon.classList.remove('fa-cloud-sun');
+        weatherIcon.classList.remove('fa-cloud-showers-heavy');
+        weatherIcon.classList.remove('fa-snowflake');
 
     }
 }
 
 //Listening on pressing ENTER key
 input.addEventListener('keyup', function(event) {
-    
     if(event.keyCode == 13) {
         fetchData(input.value);
     }
-
 });
